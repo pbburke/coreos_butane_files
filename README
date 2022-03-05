@@ -1,0 +1,13 @@
+I am using this for installing CoreOS as a guest in ESXI 7
+make a yaml file and then turn it into an ign file
+yaml reference: https://docs.fedoraproject.org/en-US/fedora-coreos/remote-ign/
+
+  butane --pretty --strict example.bu > example.ign
+
+host it
+
+  python3 -m http.server
+
+live boot and install it
+
+  sudo coreos-installer install /dev/sda --insecure-ignition --ignition-url http://yourip:8000/example.ign
